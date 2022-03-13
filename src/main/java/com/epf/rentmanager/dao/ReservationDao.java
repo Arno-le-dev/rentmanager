@@ -39,6 +39,8 @@ public class ReservationDao {
 	private static final String FIND_RESERVATIONS_QUERY = "SELECT id, client_id, vehicle_id, debut, fin FROM Reservation;";
 	private static final String FIND_CLIENT_QUERY = "SELECT nom, prenom, email, naissance FROM Client WHERE id=?;";	
 	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle WHERE id=?;";
+	private static final String UPDATE_RESERVATION_QUERY = "UPDATE Reservation SET client_id=?, vehicle_id=?, debut=?, fin=? WHERE id=?;";
+	private static final String COUNT_RESERVATIONS_QUERY = "SELECT COUNT (id) FROM Reservation;";
 	
 	
 public long create(Reservation reservation) throws DaoException {
@@ -53,6 +55,7 @@ public long create(Reservation reservation) throws DaoException {
 			
 			Date addDateDebut = Date.valueOf(reservation.getDateStart());
 			Date addDateFin = Date.valueOf(reservation.getDateEnd());
+			
 			
 			pstmt.setDate(3, addDateDebut);
 			pstmt.setDate(4, addDateFin);
@@ -149,6 +152,7 @@ public long create(Reservation reservation) throws DaoException {
 			ResultSet rsClient = pstmtClient.executeQuery();			
 			rsClient.next();
 			String nomClientParId = rsClient.getString("nom");
+			String prenomClientParId = rsClient.getString("prenom"); 
 			
 			
 			PreparedStatement pstmtVehicle = conn.prepareStatement(FIND_VEHICLE_QUERY);
@@ -158,30 +162,86 @@ public long create(Reservation reservation) throws DaoException {
 			String nomVehicleParId = rsVehicle.getString("constructeur");
 
 			
-			ReservationWeb reservation = new ReservationWeb(reservationId,nomClientParId,nomVehicleParId,reservationDebut,reservationFin);
+			ReservationWeb reservation = new ReservationWeb(reservationId,nomClientParId,prenomClientParId,nomVehicleParId,reservationDebut,reservationFin);
 
 			reservationWeb.add(reservation);
 			}
-			return Optional.of(reservationWeb);
+			return Optional.of(reservationWeb);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return Optional.empty();	
+	}
+	
+public long edit(Reservation reservation) throws DaoException {
+		
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(UPDATE_RESERVATION_QUERY);
 
+	
+			pstmt.setInt(1, reservation.getIdClient());
+			pstmt.setInt(2, reservation.getIdVehicule());
+			
+			Date addDateDebut = Date.valueOf(reservation.getDateStart());
+			Date addDateFin = Date.valueOf(reservation.getDateEnd());
 			
 			
+			pstmt.setDate(3, addDateDebut);
+			pstmt.setDate(4, addDateFin);
+			pstmt.setInt(5, reservation.getId());
+
+			pstmt.executeUpdate();
+
+			return 0;
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		
-		return Optional.empty();
-		
+		return 0;
 		
 	}
 	
+public long delete(Integer id) throws DaoException {
 	
+	try {
+		Connection conn = ConnectionManager.getConnection(); 
+		PreparedStatement pstmt = conn.prepareStatement(DELETE_RESERVATION_QUERY); 
+		
+		pstmt.setInt(1,  id);
+		
+		pstmt.executeUpdate(); 
+		return 0; 
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return 0; 
+}
+	
+public long count() throws DaoException {
 
-	
-	
-	
+	try {
+		Connection conn = ConnectionManager.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(COUNT_RESERVATIONS_QUERY);
+
+		ResultSet rs = pstmt.executeQuery();
+
+		rs.next();
+		int compte = rs.getInt(1);
+
+		return compte;
+
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+	return 0;
+
+}
 	
 	
 }

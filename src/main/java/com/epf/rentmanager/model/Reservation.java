@@ -55,6 +55,13 @@ public class Reservation {
 		this.id = id;
 	}
 	
+	public Reservation(int idClient, int idVehicule, LocalDate dateStart, LocalDate dateEnd) {
+		this.idClient = idClient;
+		this.idVehicule = idVehicule;
+		this.dateStart = dateStart;
+		this.dateEnd = dateEnd;
+	}
+	
 
 
 	

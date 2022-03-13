@@ -41,5 +41,25 @@ public class ReservationServlet extends HttpServlet {
 		
 	}
 	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+			
+			
+			String idStr = request.getParameter("idResa"); 				
+			int id = Integer.parseInt(idStr);
+			
+			System.out.println(idStr); 
+			
+			try {
+				request.setAttribute("deleteClients", this.reservationService.delete(id)); 
+			} catch (ServiceException e){
+				e.printStackTrace(); 
+			}
+			// on récupère la réponse à notre requête 
+		this.doGet(request, response); 
+			}
+	
+	
+	
 }
 

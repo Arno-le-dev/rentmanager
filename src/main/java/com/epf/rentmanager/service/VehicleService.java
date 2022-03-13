@@ -70,4 +70,14 @@ public class VehicleService {
 		
 	}
 	
+	public long count() {
+		try {
+			return this.vehicleDao.count();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	
+	}
+	
 }

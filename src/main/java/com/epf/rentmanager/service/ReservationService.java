@@ -38,4 +38,33 @@ public long create(Reservation reservation) throws ServiceException {
 	return 0;
 	
 	}
+
+
+public long edit(Reservation reservation) throws ServiceException{
+	try {
+		return this.reservationDao.edit(reservation); 
+	} catch (DaoException e) {
+		e.printStackTrace(); 
+	}
+	return 0; 
+}
+
+public long delete(Integer id) throws ServiceException{
+	try {
+		return this.reservationDao.delete(id); 
+	} catch (DaoException e) {
+		e.printStackTrace(); 
+	}
+	return 0; 
+}
+
+public long count() {
+	try {
+		return this.reservationDao.count();
+	} catch (DaoException e) {
+		e.printStackTrace();
+	}
+	return 0;
+
+}
 }

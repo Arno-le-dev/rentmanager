@@ -9,6 +9,7 @@ public class ReservationWeb {
 	private int id;
 	
 	private String nomClient;
+	private String prenomClient; 
 	private String nomVehicule;
 	public LocalDate getDateStart() {
 		return dateStart;
@@ -40,11 +41,17 @@ public class ReservationWeb {
 	public void setNomVehicule(String nomVehicule) {
 		this.nomVehicule = nomVehicule;
 	}
+	public String getPrenomClient() {
+		return prenomClient;
+	}
+	public void setPrenomClient(String prenomClient) {
+		this.prenomClient = prenomClient;
+	}
 	
-	
-	public  ReservationWeb (int id, String nomClient, String nomVehicule, LocalDate dateStart, LocalDate dateEnd) {
+	public  ReservationWeb (int id, String nomClient, String prenomClient, String nomVehicule, LocalDate dateStart, LocalDate dateEnd) {
 		super();
 		this.nomClient = nomClient;
+		this.prenomClient = prenomClient; 
 		this.nomVehicule = nomVehicule;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;

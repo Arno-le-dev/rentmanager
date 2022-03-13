@@ -44,7 +44,7 @@
                                     	<td>${user.naissance}</td>  
                                     	
                                     	<td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=${user.idClient}">
+                                        <a class="btn btn-primary" href="#">
                                             <i class="fa fa-play"></i>
                                         </a>
                                         <a class="btn btn-success" href="${pageContext.request.contextPath}/users/edit?id=${user.idClient}">

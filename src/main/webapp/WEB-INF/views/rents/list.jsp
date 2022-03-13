@@ -25,6 +25,7 @@
                 <div class="col-md-12">
                     <div class="box">
                         <div class="box-body no-padding">
+                           <form class="form-horizontal" method="post" action="/rentmanager/rents">
                             <table class="table table-striped">
                                 <tr>
                                     <th style="width: 10px">#</th>
@@ -34,48 +35,35 @@
                                     <th>Fin</th>
                                     <th>Action</th>
                                 </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Renault Clio</td>
-                                    <td>John Doe</td>
-                                    <td>10/01/2019</td>
-                                    <td>13/01/2019</td>
-                                    <td>
-                                        <a class="btn btn-primary disabled" href="${pageContext.request.contextPath}/cars?id=1">
+                                                       
+                                   <c:forEach items="${reservations}" var="rent">
+                                    <tr>
+                                    	<td>${rent.id}</td> 
+                                    	<td>${rent.nomVehicule}</td>
+                                    	<td>${rent.prenomClient} ${rent.nomClient}</td>                                 
+                                    	<td>${rent.dateStart}</td>
+                                    	<td>${rent.dateEnd}</td>
+                                    	 
+                                    	
+                                    	<td>
+                                        <a class="btn btn-primary" href="#">
                                             <i class="fa fa-play"></i>
                                         </a>
-                                        <a class="btn btn-success disabled" href="#">
+                                        <a class="btn btn-success" href="${pageContext.request.contextPath}/rents/edit?id=${rent.id}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-danger disabled" href="#">
+                                        <button type="submit" class="btn btn-danger" id="idResa" name="idResa" value="${rent.id}">
                                             <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
+                                        </button>
+                                   
+                                    </td>                                    	                           
                                 </tr>
-
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Citroen C2</td>
-                                    <td>Jane Doe</td>
-                                    <td>10/01/2019</td>
-                                    <td>13/01/2019</td>
-                                    <td>
-                                        <a class="btn btn-primary disabled" href="${pageContext.request.contextPath}/cars?id=2">
-                                            <i class="fa fa-play"></i>
-                                        </a>
-                                        <a class="btn btn-success disabled" href="#">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a class="btn btn-danger disabled" href="#">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                                           
+                             		</c:forEach>                        
                                
                                 
                                 
                             </table>
+                            </form>
                         </div>
                         <!-- /.box-body -->
                     </div>

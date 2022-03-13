@@ -52,7 +52,9 @@ public class CreateUserServlet extends HttpServlet {
 			
 			// on crée un objet de type client avec les paramètres récupérés
 			Client client = new Client(firstName, lastName, email, date);
-		
+			
+			System.out.println(client); 
+			
 			// on envoie une requête avec en paramètre le retour de la fonction create
 			try {
 				request.setAttribute("addClients", this.clientService.create(client)); 
