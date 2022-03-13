@@ -22,7 +22,6 @@ public class ClientService {
 
 	public long create(Client client) throws ServiceException {
 		
-		// on fait appelle à la fonction create de clientDao en transmettant le client créé dans le servlet
 		try {
 			return this.clientDao.create(client);
 		} catch (DaoException e) {
@@ -53,7 +52,7 @@ public class ClientService {
 		try {
 			return this.clientDao.findById(id).get();
 		} catch (DaoException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		return null;
@@ -64,11 +63,10 @@ public class ClientService {
 		try {
 			return this.clientDao.findAll();
 		} catch (DaoException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		return null;
-		// TODO: récupérer tous les clients
 
 	}
 

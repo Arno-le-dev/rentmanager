@@ -16,7 +16,6 @@ import com.epf.rentmanager.dao.VehicleDao;
 public class VehicleService {
 
 	private VehicleDao vehicleDao;
-//	public static VehicleService instance;
 	
 	private VehicleService(VehicleDao vehicleDao) {
 		this.vehicleDao = vehicleDao;
@@ -24,7 +23,6 @@ public class VehicleService {
 	
 	
 	public long create(Vehicle vehicle) throws ServiceException {
-		// on fait appelle à la fonction create de vehicleDao en transmettant le véhicule créé dans le servlet
 				try {
 					return this.vehicleDao.create(vehicle);
 				} catch (DaoException e) {
@@ -55,7 +53,6 @@ public class VehicleService {
 	
 	public Vehicle findById(long id) throws ServiceException {
 		return null;
-		// TODO: récupérer un véhicule par son id
 		
 	}
 
@@ -66,7 +63,6 @@ public class VehicleService {
 			e.printStackTrace();
 		}
 		return null;
-		// TODO: récupérer tous les clients
 		
 	}
 	

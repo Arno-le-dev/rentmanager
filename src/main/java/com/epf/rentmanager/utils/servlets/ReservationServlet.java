@@ -48,7 +48,6 @@ public class ReservationServlet extends HttpServlet {
 			String idStr = request.getParameter("idResa"); 				
 			int id = Integer.parseInt(idStr);
 			
-			System.out.println(idStr); 
 			
 			try {
 				request.setAttribute("deleteClients", this.reservationService.delete(id)); 

@@ -60,39 +60,25 @@ public class CreateReservationServlet extends HttpServlet {
 		String idCar = request.getParameter("car");
 		String idClient = request.getParameter("client");
 		
-		System.out.println(idCar);
-		System.out.println(idClient);
 		
-		/*String splitNomCar = nomCar.replaceAll("[^\\d]", "").replaceAll(" +", " ").replaceFirst(".$",""); 
-		String splitNomClient = nomClient.replaceAll("[^\\d]", " ").replaceAll(" +", " ").replaceFirst(".$",""); 
-		
-		System.out.println(splitNomCar);
-		System.out.println(splitNomClient);*/  
-
 		
 		int addIdCar = Integer.parseInt(idCar);
 		int addIdClient = Integer.parseInt(idClient);
 		
-		System.out.println(addIdCar);
-		System.out.println(addIdClient);
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 		
 		String dateDebut = request.getParameter("debut");
 		String dateFin = request.getParameter("fin");
 		
-		System.out.println(dateDebut);
-		System.out.println(dateFin);
-		
 		LocalDate addDateDebut = LocalDate.parse(dateDebut, formatter);
 		LocalDate addDateFin = LocalDate.parse(dateFin, formatter);
 
-		System.out.println(addDateDebut);
-		System.out.println(addDateFin);
+	
 		
 		Reservation reservation = new Reservation(addIdClient,addIdCar,addDateDebut,addDateFin);
 
-		System.out.println(reservation);
+		
 		try {
 			request.setAttribute("addResa", this.reservationService.create(reservation));
 		} catch (ServiceException e) {

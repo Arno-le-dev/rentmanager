@@ -54,9 +54,7 @@ public class FillDatabase {
             stmt.execute("INSERT INTO Client(nom, prenom, email, naissance) VALUES('Rousseau', 'Jacques', 'jacques.rousseau@email.com', '1988-01-22')");
                     
             connection.commit();
-            System.out.println("Success!");
         } catch (SQLException e) {
-            System.out.println("Exception Message " + e.getLocalizedMessage());
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();

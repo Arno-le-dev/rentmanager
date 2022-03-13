@@ -38,7 +38,6 @@ public class CreateUserServlet extends HttpServlet {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/users/create.jsp").forward(request, response);
 	}
 
-	
 	// on définit la méthode doPost qui sera appeler lors d'un ajout 
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -52,8 +51,6 @@ public class CreateUserServlet extends HttpServlet {
 			
 			// on crée un objet de type client avec les paramètres récupérés
 			Client client = new Client(firstName, lastName, email, date);
-			
-			System.out.println(client); 
 			
 			// on envoie une requête avec en paramètre le retour de la fonction create
 			try {

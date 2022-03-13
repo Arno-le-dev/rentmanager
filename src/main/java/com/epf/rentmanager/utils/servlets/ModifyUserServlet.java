@@ -46,7 +46,6 @@ public class ModifyUserServlet extends HttpServlet {
 			String idDef = idStr.substring(3);
 			int id = Integer.parseInt(idDef); 
 			
-			System.out.println("TESTTTTTTT");
 			
 			//on récupère les entrées du site web (en se référant aux noms des différents champ du .jsp
 			String firstName = request.getParameter("first_name"); 
@@ -62,7 +61,6 @@ public class ModifyUserServlet extends HttpServlet {
 			try {
 				request.setAttribute("modifyClients", this.clientService.edit(client)); 
 				
-				System.out.println("La query fonctionne au niveau du servlet"); 
 				
 				
 			} catch (ServiceException e){

@@ -19,17 +19,6 @@ import com.epf.rentmanager.persistence.ConnectionManager;
 public class VehicleDao {
 	
 	
-	/* static VehicleDao instance = null;
-	private VehicleDao() {}
-	public static VehicleDao getInstance() {
-		if(instance == null) {
-			instance = new VehicleDao();
-		}
-		return instance;
-	} */ 
-	// fonction inutile avec l'utilisation de Spring (@Repository) 
-	
-	
 	private static final String CREATE_VEHICLE_QUERY = "INSERT INTO Vehicle(constructeur, nb_places) VALUES(?, ?);";
 	private static final String DELETE_VEHICLE_QUERY = "DELETE FROM Vehicle WHERE id=?;";
 	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle WHERE id=?;";
@@ -132,7 +121,6 @@ public class VehicleDao {
 			return compte;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

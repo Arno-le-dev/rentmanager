@@ -22,16 +22,6 @@ import com.epf.rentmanager.persistence.ConnectionManager;
 @Repository 
 public class ReservationDao {
 
-	/*private static ReservationDao instance = null;
-	private ReservationDao() {}
-	public static ReservationDao getInstance() {
-		if(instance == null) {
-			instance = new ReservationDao();
-		}
-		return instance;
-	} */ 
-	// fonction inutile avec l'utilisation de Spring (@Repository) 
-	
 	private static final String CREATE_RESERVATION_QUERY = "INSERT INTO Reservation(client_id, vehicle_id, debut, fin) VALUES(?, ?, ?, ?);";
 	private static final String DELETE_RESERVATION_QUERY = "DELETE FROM Reservation WHERE id=?;";
 	private static final String FIND_RESERVATIONS_BY_CLIENT_QUERY = "SELECT id, vehicle_id, debut, fin FROM Reservation WHERE client_id=?;";
@@ -65,7 +55,6 @@ public long create(Reservation reservation) throws DaoException {
 			return 0;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -110,8 +99,7 @@ public long create(Reservation reservation) throws DaoException {
 				Reservation reservation = new Reservation(rentId, clientId, vehicleId, debutRent, finRent);
 				reservations.add(reservation); 
 				
-				System.out.println("Réservation DAO fonctionne");
-				System.out.println(reservations);
+				
 			}
 			return reservations; 
 			
@@ -168,7 +156,6 @@ public long create(Reservation reservation) throws DaoException {
 			}
 			return Optional.of(reservationWeb);	
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		return Optional.empty();	
@@ -197,7 +184,6 @@ public long edit(Reservation reservation) throws DaoException {
 			return 0;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -235,7 +221,6 @@ public long count() throws DaoException {
 		return compte;
 
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 

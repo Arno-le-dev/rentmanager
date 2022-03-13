@@ -65,6 +65,6 @@ public long count() {
 		e.printStackTrace();
 	}
 	return 0;
+	}
 
-}
 }

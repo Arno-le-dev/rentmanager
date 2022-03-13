@@ -20,17 +20,6 @@ import com.epf.rentmanager.model.Client;
 @Repository 
 public class ClientDao {
 	
-	/* private static ClientDao instance = null;
-	private ClientDao() {}
-	public static ClientDao getInstance() {
-		if(instance == null) {
-			instance = new ClientDao();
-		}
-		
-		return instance;
-	} */  // 
-	// fonction inutile avec l'utilisation de Spring (@Repository) 
-	
 	private static final String CREATE_CLIENT_QUERY = "INSERT INTO Client(nom, prenom, email, naissance) VALUES(?, ?, ?, ?);";
 	private static final String DELETE_CLIENT_QUERY = "DELETE FROM Client WHERE id=?;";
 	private static final String FIND_CLIENT_QUERY = "SELECT nom, prenom, email, naissance FROM Client WHERE id=?;";
@@ -44,7 +33,6 @@ public class ClientDao {
 			Connection conn= ConnectionManager.getConnection();
 			PreparedStatement pstmt= conn.prepareStatement(CREATE_CLIENT_QUERY);
 				
-			// on récupère les paramètres avec de notre client avec les getter et on les passe dans le PreparedStatement							
 			pstmt.setString(1,client.getNom()); 
 			pstmt.setString(2,client.getPrenom()); 
 			pstmt.setString(3,client.getEmail());
@@ -119,7 +107,7 @@ public class ClientDao {
 			
 			
 			return Optional.of(client);
-			//System.out.println(rs);
+		
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -176,7 +164,6 @@ public class ClientDao {
 			return compte;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

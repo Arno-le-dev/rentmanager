@@ -51,19 +51,9 @@ public class ModifyCarsServlet extends HttpServlet {
 			
 			// on crée un objet de type client avec les paramètres récupérés
 			Vehicle vehicle = new Vehicle(id, manufacturer, seats);
-			
-			
-			
-			System.out.println("mon doPost fonctionne");
-		
-			System.out.println(vehicle.getIdVehicule()); 
-			System.out.println(vehicle.getConstructeur());
-			System.out.println(vehicle.getNbPlaces());
-			
+						
 			// on envoie une requête avec en paramètre le retour de la fonction create
 			try {
-				System.out.println("TRYYYYYY"); 
-				System.out.println(vehicle.getIdVehicule());
 				request.setAttribute("modifyCars", this.vehicleService.edit(vehicle)); 
 				
 				

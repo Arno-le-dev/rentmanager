@@ -52,10 +52,6 @@ public class VehicleServlet extends HttpServlet {
 		System.out.println(idStr); 
 		int id = Integer.parseInt(idStr);
 					
-		// on crée un objet de type client avec les paramètres récupérés
-		//	Client client = new Client(firstName, lastName, email, date);
-				
-		// on envoie une requête avec en paramètre le retour de la fonction create
 		try {
 		request.setAttribute("deleteClients", this.vehiculeService.delete(id)); 
 		} catch (ServiceException e){

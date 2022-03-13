@@ -53,10 +53,7 @@ public class UserServlet extends HttpServlet {
 				String idStr = request.getParameter("idClient"); 				
 				int id = Integer.parseInt(idStr);
 				
-				// on crée un objet de type client avec les paramètres récupérés
-			//	Client client = new Client(firstName, lastName, email, date);
 			
-				// on envoie une requête avec en paramètre le retour de la fonction create
 				try {
 					request.setAttribute("deleteClients", this.clientService.delete(id)); 
 				} catch (ServiceException e){
